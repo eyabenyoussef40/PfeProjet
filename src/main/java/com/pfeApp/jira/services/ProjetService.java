@@ -2,13 +2,13 @@ package com.pfeApp.jira.services;
 
 import com.pfeApp.jira.entities.Projet;
 import java.util.List;
+import java.util.Optional;
 
 public interface ProjetService {
-    Projet addProjet(Projet projet);
-    Projet updateProjet(Projet projet, int id_projet);
-    void deleteProjet(int id_projet);
+    Optional<Projet> addProjet(Projet projet);
+    Optional<Projet> updateProjet(Projet projet, Long id_projet);
+    void deleteProjet(Long id_projet);
     List<Projet> getAll();
-    List<Projet> addall(List<Projet> projetall);
     String add(Projet projet);
     Projet getByNomProjet(String nomProjet);
 }
