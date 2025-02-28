@@ -22,10 +22,8 @@ public class ProjetServiceImpl implements ProjetService  {
     @Override
     public Optional<Projet> updateProjet(Projet projet, Long id_projet) {
         Optional<Projet> optionalProjet = pr.findById(id_projet); // Rechercher PROJET par ID
-        System.out.println("ghggghg"+id_projet);
         if (optionalProjet.isPresent()) {
             Projet existingProjet = optionalProjet.get(); // Récupérer PROJET existant
-            System.out.println("ghggghg");
 
             // Mettre à jour uniquement les champs non nuls
             if (projet.getNomProjet() != null) {

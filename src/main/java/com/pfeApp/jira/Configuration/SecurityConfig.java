@@ -17,8 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.pfeApp.jira.entities.Role.ADMIN;
-import static com.pfeApp.jira.entities.Role.USER;
+import static com.pfeApp.jira.entities.Role.*;
 
 @Configuration
 @EnableWebSecurity
@@ -34,6 +33,9 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req.requestMatchers("/api/v1/auth/**")
                         .permitAll()
+                        //.requestMatchers("/tache/**").permitAll()
+                        //.requestMatchers("/projet/**").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers("/api/v1/chef-de-projet/**").hasAuthority(CHEF_DE_PROJET.name())
                         .requestMatchers("/api/v1/admin").hasAnyAuthority(ADMIN.name())
                         .requestMatchers("/api/v1/user").hasAnyAuthority(USER.name())
                         .anyRequest().authenticated())
