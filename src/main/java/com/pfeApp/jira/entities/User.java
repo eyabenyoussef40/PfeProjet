@@ -1,5 +1,6 @@
 package com.pfeApp.jira.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -31,11 +32,18 @@ public class User implements UserDetails {
     private String username;
     @Column(unique = true,nullable=false)
     private String email;
+    private String title;
+    private int phone;
+    private String adress;
+    private String birthday;
+    private String Notes;
+
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
     private Date createAt;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Projet> projets = new HashSet<>();
 

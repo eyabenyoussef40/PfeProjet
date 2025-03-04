@@ -35,8 +35,7 @@ public class Projet {
     @JsonIgnore
     @OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
     private Set<Tache> Taches = new HashSet<>();
-
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "projet_user",

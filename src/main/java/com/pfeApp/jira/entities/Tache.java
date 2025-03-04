@@ -35,9 +35,11 @@ public class Tache {
         private StatutTache statut;
         @Enumerated(EnumType.STRING)
         private Priorite priorite;
+        @JsonIgnore
         @ManyToOne()
         @JoinColumn(name="projet_id")
         private Projet projet;
+        @JsonIgnore
 
         @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinTable(
